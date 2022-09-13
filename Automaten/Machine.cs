@@ -15,6 +15,8 @@ namespace Automaten
         //variable
         ConsoleKeyInfo choice;
         private bool exit = false;
+        
+        //Uha - dit modellag må ikke kende til dit GUI lag!
         GUI display;
 
         //constructor
@@ -23,6 +25,8 @@ namespace Automaten
             this.display = display;
         }
 
+        
+        //Hvorfor bruger du ikke en løkke til at oprette alle disse elementer? Det er redundant kode og det vil vi ikke lave!
         //create products objects, drinks
         Product p = new Drink("Pepsi Max", 20, "0,5L");
         Product p1 = new Drink("Pepsi Max", 20, "0,5L");
@@ -56,9 +60,13 @@ namespace Automaten
         Queue<Product> shelf4 = new Queue<Product>();
 
         //list named deliveryTrey, when a product is takten out of the queue, put in the trey så the user can take it
+        
+        //Har du virkelig brug for en liste til at opbevare alle elementerne? :) Kan man godt have 3 marsbar liggende? Det er ikke en fejl - det er forretningslogik
         List<Product> deliveryTrey = new List<Product>();
 
         //method nemed Test, puts our products in queues and containing the methodcalls to the user display
+        
+        //Hvorfor kalder du metoden test?
         protected internal void Test()
         {
             //adds the products to the shelves
@@ -87,6 +95,8 @@ namespace Automaten
             shelf4.Enqueue(m4);
 
             //do/while to start the vending machine 
+            
+            //Al denne logik hører til UI laget
             do
             {
                 //call the userDisplay method
@@ -102,7 +112,7 @@ namespace Automaten
             } while (!exit);
 
         }
-        
+        //UI lag
         //the method UserDisplay  
         protected internal void UserDisplay()
         {
@@ -215,6 +225,8 @@ namespace Automaten
         }
         
         //methods used for the payment
+        
+        Du har flere redundante metoder, det er ikke så smart. Alle dine PaymentShelf kunne du nemt have samlet til een og sparet dig selv for en masse redundans.
         private void PaymentShelf1()
         {
             int amount = int.Parse(Console.ReadLine());
